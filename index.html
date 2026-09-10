@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Robert & Elena</title>
+<meta http-equiv="content-language" content="es">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap">
+<style>
+  :root{
+    --ivory:#FFFCF6;
+    --sand:#F6ECDA;
+    --sand-deep:#EBDCC0;
+    --gold:#C9A227;
+    --gold-deep:#9C7A1C;
+    --gold-soft:#E6CE84;
+    --coral:#E8956B;
+    --blush:#F5CDBB;
+    --sea:#8FBFC4;
+    --ink:#3B2F22;
+    --ink-soft:#7A6A57;
+    --serif:"Cormorant Garamond","Cormorant",Garamond,"Times New Roman",serif;
+    --script:"Great Vibes","Brush Script MT","Snell Roundhand",cursive;
+    --sans:"Jost","Futura","Avenir Next","Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;text-wrap:balance;line-height:1.1}
+  p{margin:0}
+  .eyebrow{font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-deep)}
+  .script{font-family:var(--script);font-weight:400;color:var(--gold-deep)}
+  .wrap{max-width:1140px;margin:0 auto;padding-inline:clamp(16px,4vw,48px)}
+  .measure{max-width:62ch}
+
+  /* ---------- nav ---------- */
+  nav{position:sticky;top:0;z-index:20;background:rgba(255,252,246,.82);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,162,39,.25)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+  nav .mono{font-family:var(--serif);font-size:1.35rem;letter-spacing:.12em}
+  nav .mono em{font-family:var(--script);font-style:normal;color:var(--gold-deep);font-size:1.5rem;margin:0 .15em}
+  nav ul{list-style:none;display:flex;gap:clamp(14px,3vw,32px);margin:0;padding:0}
+  nav li a{text-decoration:none;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;font-weight:400;color:var(--ink-soft);padding:6px 0;border-bottom:1px solid transparent}
+  nav li a:hover,nav li a:focus-visible{color:var(--gold-deep);border-bottom-color:var(--gold);outline:none}
+  @media (max-width:640px){nav ul{display:none}}
+
+  /* ---------- hero ---------- */
+  header.hero{position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 70% at 50% 100%, rgba(232,149,107,.55) 0%, rgba(245,205,187,.35) 35%, rgba(255,252,246,0) 70%),
+      linear-gradient(180deg,#FFFCF6 0%,#FBF1E2 45%,#F7DFC7 80%,#F2C9B0 100%);}
+  .hero .wrap{position:relative;z-index:2;text-align:center;padding-block:clamp(56px,9vw,120px) clamp(72px,10vw,140px)}
+  .hero .names{font-family:var(--script);font-size:clamp(3.4rem,10vw,7.5rem);color:var(--gold-deep);line-height:1;margin:18px 0 6px;text-shadow:0 1px 0 #fff}
+  .hero .names span{display:inline-block}
+  .hero .amp{font-family:var(--serif);font-style:italic;font-size:.55em;color:var(--gold);vertical-align:.25em;margin:0 .1em}
+  .hero .sub{font-family:var(--serif);font-size:clamp(1.15rem,2.3vw,1.6rem);font-style:italic;font-weight:300;color:var(--ink-soft)}
+  .hero .date{display:inline-flex;align-items:center;gap:18px;margin-top:34px;font-family:var(--serif);font-size:1.05rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink)}
+  .hero .date::before,.hero .date::after{content:"";width:56px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+  .hero .date::after{background:linear-gradient(90deg,var(--gold),transparent)}
+  .sun{position:absolute;left:50%;bottom:-24vw;width:54vw;max-width:700px;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;
+    background:radial-gradient(circle at 50% 35%, #FFF6E0 0%, #F8DDA6 30%, #F2BE8A 58%, rgba(242,190,138,0) 72%);opacity:.6;z-index:1}
+  .palm{position:absolute;bottom:-6px;width:clamp(150px,26vw,340px);height:auto;z-index:1;color:var(--gold-deep);opacity:.42}
+  .palm.left{left:-3%;transform:scaleX(-1)}
+  .palm.right{right:-3%}
+  .hero .roses{display:flex;justify-content:center;gap:10px;margin-bottom:6px;color:#fff}
+  .hero .roses svg{width:34px;height:34px;filter:drop-shadow(0 1px 2px rgba(156,122,28,.35))}
+  .hero .roses svg:nth-child(2){width:44px;height:44px}
+
+  /* ---------- section chrome ---------- */
+  section{padding-block:clamp(56px,8vw,104px)}
+  .sec-head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:clamp(32px,5vw,56px)}
+  .sec-head h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:300}
+  .sec-head h2 em{font-style:italic;color:var(--gold-deep)}
+  .ornament{display:flex;align-items:center;gap:14px;color:var(--gold)}
+  .ornament::before,.ornament::after{content:"";width:44px;height:1px;background:var(--gold-soft)}
+  .ornament svg{width:20px;height:20px}
+
+  /* ---------- story ---------- */
+  #story .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:center}
+  #story .lead{font-family:var(--serif);font-size:clamp(1.35rem,2.2vw,1.7rem);font-weight:300;line-height:1.4;font-style:italic;color:var(--ink);margin-bottom:22px}
+  #story .text p+p{margin-top:14px}
+  #story .text p{color:var(--ink-soft)}
+  .frame{position:relative;padding:14px;background:#fff;box-shadow:0 20px 50px -24px rgba(59,47,34,.35);}
+  .frame::before{content:"";position:absolute;inset:6px;border:1px solid var(--gold-soft);pointer-events:none}
+  .frame .ph{aspect-ratio:4/5}
+
+  /* placeholder photo */
+  .ph{position:relative;overflow:hidden;background:linear-gradient(160deg,#F9EBD5 0%,#F3D3B8 45%,#E9B79A 100%);display:grid;place-items:center;color:rgba(156,122,28,.75)}
+  .ph::after{content:attr(data-label);position:absolute;left:12px;bottom:10px;font-family:var(--sans);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(122,106,87,.85)}
+  .ph svg{width:26%;max-width:72px;height:auto;opacity:.75}
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ph.has-img::after{display:none}
+  .ph.has-img svg{display:none}
+
+  /* ---------- day ---------- */
+  #day{background:linear-gradient(180deg,var(--ivory),var(--sand) 50%,var(--ivory));position:relative}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,36px)}
+  .card{background:#fff;padding:clamp(28px,4vw,44px);position:relative;border:1px solid rgba(201,162,39,.28)}
+  .card::before{content:"";position:absolute;inset:8px;border:1px solid rgba(201,162,39,.22);pointer-events:none}
+  .card .icon{width:46px;height:46px;color:var(--gold);margin-bottom:18px}
+  .card h3{font-size:1.9rem;font-weight:400;margin-bottom:4px}
+  .card .meta{font-family:var(--serif);font-style:italic;color:var(--gold-deep);font-size:1.05rem;margin-bottom:16px}
+  .card p{color:var(--ink-soft)}
+  .card p+p{margin-top:12px}
+  .card .place{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin-top:20px;padding-top:16px;border-top:1px solid var(--sand-deep);font-size:.9rem}
+  .card .place dt{font-weight:400;letter-spacing:.18em;text-transform:uppercase;font-size:.68rem;color:var(--gold-deep);padding-top:.25em}
+  .card .place dd{margin:0;color:var(--ink)}
+
+  /* ---------- gallery ---------- */
+  #gallery .sec-head p{color:var(--ink-soft);max-width:52ch}
+  .masonry{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;grid-auto-flow:dense;gap:12px}
+  .masonry figure{margin:0;position:relative;cursor:zoom-in;overflow:hidden;background:#fff;padding:0}
+  .masonry figure .ph{height:100%;transition:transform .5s ease}
+  .masonry figure:hover .ph,.masonry figure:focus-visible .ph{transform:scale(1.03)}
+  .masonry figure:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .masonry figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(201,162,39,.35);pointer-events:none}
+  .masonry .tall{grid-row:span 2}
+  .masonry .wide{grid-column:span 2}
+  .masonry .big{grid-column:span 2;grid-row:span 2}
+  .masonry figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 10px;font-family:var(--serif);font-style:italic;font-size:.95rem;color:#fff;background:linear-gradient(180deg,rgba(59,47,34,0),rgba(59,47,34,.55));opacity:0;transition:opacity .3s}
+  .masonry figure:hover figcaption{opacity:1}
+  .gallery-note{margin-top:22px;text-align:center;font-size:.8rem;letter-spacing:.12em;color:var(--ink-soft)}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:50;background:rgba(41,31,20,.92);display:none;align-items:center;justify-content:center;padding:24px}
+  .lb[open]{display:flex}
+  .lb .stage{max-width:min(1100px,94vw);max-height:88vh;display:flex;flex-direction:column;gap:14px;align-items:center}
+  .lb .stage .ph{width:min(1100px,94vw);aspect-ratio:3/2;max-height:78vh;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .lb .stage .ph::after{color:#fff9;}
+  .lb .cap{font-family:var(--serif);font-style:italic;color:var(--sand);font-size:1.1rem;text-align:center}
+  .lb button{position:absolute;background:none;border:1px solid rgba(255,252,246,.4);color:var(--ivory);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:22px;font-family:var(--serif);display:grid;place-items:center}
+  .lb button:hover,.lb button:focus-visible{border-color:var(--gold);color:var(--gold-soft);outline:none}
+  .lb .close{top:18px;right:18px}
+  .lb .prev{left:18px;top:50%;transform:translateY(-50%)}
+  .lb .next{right:18px;top:50%;transform:translateY(-50%)}
+  .lb .count{position:absolute;top:30px;left:24px;font-size:.72rem;letter-spacing:.3em;color:var(--gold-soft)}
+
+  /* ---------- guestbook ---------- */
+  #notes{background:
+      radial-gradient(90% 60% at 50% 110%, rgba(143,191,196,.28) 0%, rgba(143,191,196,0) 70%),
+      linear-gradient(180deg,var(--ivory),#FBF3E6)}
+  .notes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .note{background:#fff;padding:28px 26px;border:1px solid rgba(201,162,39,.25);position:relative}
+  .note::before{content:"\201C";position:absolute;top:6px;left:18px;font-family:var(--serif);font-size:4rem;line-height:1;color:var(--gold-soft)}
+  .note p{font-family:var(--serif);font-size:1.15rem;font-style:italic;line-height:1.45;margin-top:22px;color:var(--ink)}
+  .note .who{margin-top:16px;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep)}
+  .cta{margin-top:40px;text-align:center}
+  .btn{display:inline-block;padding:14px 34px;border:1px solid var(--gold);color:var(--gold-deep);text-decoration:none;font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;font-weight:400;background:#fff;transition:background .25s,color .25s}
+  .btn:hover,.btn:focus-visible{background:var(--gold);color:#fff;outline:none}
+
+  /* ---------- footer ---------- */
+  footer{background:linear-gradient(180deg,#F7DFC7,#EFC3A6);padding-block:56px 40px;text-align:center;position:relative;overflow:hidden}
+  footer .shells{display:flex;justify-content:center;gap:26px;color:#fff;margin-bottom:22px}
+  footer .shells svg{width:38px;height:38px;filter:drop-shadow(0 1px 2px rgba(156,122,28,.35))}
+  footer .mono{font-family:var(--script);font-size:3rem;color:var(--gold-deep);line-height:1}
+  footer .line{margin-top:10px;font-family:var(--serif);letter-spacing:.28em;text-transform:uppercase;font-size:.82rem;color:var(--ink)}
+  footer small{display:block;margin-top:26px;font-size:.72rem;letter-spacing:.14em;color:var(--ink-soft)}
+  footer .palm{opacity:.18;width:clamp(120px,20vw,260px)}
+
+  @media (max-width:900px){
+    .masonry{grid-template-columns:repeat(3,1fr);grid-auto-rows:130px}
+    .notes-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:680px){
+    #story .grid{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr}
+    .masonry{grid-template-columns:repeat(2,1fr);grid-auto-rows:120px}
+    .masonry .big{grid-column:span 2}
+    .notes-grid{grid-template-columns:1fr}
+    .hero .date{font-size:.85rem;letter-spacing:.22em}
+    .hero .date::before,.hero .date::after{width:28px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+
+<!-- motif symbols: palm frond, scallop shell, white rose -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="palm" viewBox="0 0 200 260">
+    <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+      <path d="M100 250 C104 200 108 150 112 100"/>
+      <path d="M112 100 C90 96 60 92 30 108 M112 100 C85 78 60 70 34 72 M112 100 C95 62 84 44 78 20 M112 100 C122 66 130 46 148 24 M112 100 C140 76 160 68 182 70 M112 100 C140 96 160 104 180 122"/>
+      <path d="M30 108 C48 98 66 100 82 104 M34 72 C56 74 76 84 92 96 M78 20 C88 44 98 70 104 92 M148 24 C136 48 126 72 118 92 M182 70 C160 74 142 84 124 96 M180 122 C160 112 140 106 122 104"/>
+    </g>
+  </symbol>
+  <symbol id="shell" viewBox="0 0 64 64">
+    <path fill="currentColor" d="M32 58 C20 48 10 36 8 26 c-1-5 3-9 7-9 3 0 5 2 6 4 1-5 4-9 8-9 s7 4 8 9 c1-2 3-4 6-4 4 0 8 4 7 9 c-2 10-12 22-24 32 z"/>
+    <g fill="none" stroke="#C9A227" stroke-width="1.4" stroke-linecap="round" opacity=".9">
+      <path d="M32 56 L32 24 M32 56 L20 26 M32 56 L44 26 M32 56 L12 30 M32 56 L52 30"/>
+    </g>
+  </symbol>
+  <symbol id="rose" viewBox="0 0 64 64">
+    <g fill="currentColor" opacity=".45">
+      <ellipse cx="32" cy="12" rx="9" ry="13"/>
+      <ellipse cx="32" cy="12" rx="9" ry="13" transform="rotate(72 32 32)"/>
+      <ellipse cx="32" cy="12" rx="9" ry="13" transform="rotate(144 32 32)"/>
+      <ellipse cx="32" cy="12" rx="9" ry="13" transform="rotate(216 32 32)"/>
+      <ellipse cx="32" cy="12" rx="9" ry="13" transform="rotate(288 32 32)"/>
+    </g>
+    <circle cx="32" cy="32" r="15" fill="currentColor" opacity=".7"/>
+    <g fill="none" stroke="#9C7A1C" stroke-width="1.6" stroke-linecap="round" opacity=".9">
+      <path d="M32 32 c3-4 -2-7 -4-3 c-2 4 3 6 5 3 c4-4 -1-9 -5-6 c-6 4-2 12 4 9 c7-3 4-12 -3-10 c-9 3-5 15 4 12 c10-4 6-17 -4-14"/>
+      <path d="M32 6 c6 6 6 14 0 22 M32 58 c-6-6-6-14 0-22 M6 32 c6-6 14-6 22 0 M58 32 c-6 6-14 6-22 0" opacity=".5"/>
+    </g>
+  </symbol>
+</svg>
+
+<nav aria-label="Sitio">
+  <div class="wrap">
+    <div class="mono">E<em>&amp;</em>R</div>
+    <ul>
+      <li><a href="#story">Nuestra Historia</a></li>
+      <li><a href="#day">El Gran Día</a></li>
+      <li><a href="#gallery">Galería</a></li>
+      <li><a href="#notes">Mensajes</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="sun" aria-hidden="true"></div>
+  <svg class="palm left" aria-hidden="true"><use href="#palm"/></svg>
+  <svg class="palm right" aria-hidden="true"><use href="#palm"/></svg>
+  <div class="wrap">
+    <div class="roses" aria-hidden="true">
+      <svg><use href="#rose"/></svg><svg><use href="#rose"/></svg><svg><use href="#rose"/></svg>
+    </div>
+    <p class="eyebrow">Junto a nuestros padres</p>
+    <h1 class="names"><span>Robert</span><span class="amp">&amp;</span><span>Elena</span></h1>
+    <p class="sub">nos casamos frente al mar en Miami, Florida</p>
+    <p class="date">4 de septiembre de 2026</p>
+  </div>
+</header>
+
+<section id="story">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nuestra Historia</p>
+      <h2>Cómo llegamos <em>hasta aquí</em></h2>
+      <div class="ornament" aria-hidden="true"><svg><use href="#rose"/></svg></div>
+    </div>
+    <div class="grid">
+      <div class="text">
+        <p class="lead">Nuestra historia empezó hace seis años en Guayaquil, Ecuador, con una conversación que ninguno de los dos quería terminar.</p>
+        <p>El tiempo y la distancia hicieron lo suyo, pero el destino tenía otros planes: volvimos a encontrarnos en Miami, y fue ahí donde decidimos darle un nombre a lo que sentíamos y empezar nuestro amor de verdad.</p>
+        <p>Vinieron después dos años de amor a distancia — Elena en Canadá, Robert en Miami — con vuelos, llamadas a deshoras y despedidas en aeropuertos que cada vez costaban más. Hasta que un día lo tuvimos claro: no queríamos volver a separarnos. Decidimos casarnos.</p>
+        <p>La decisión fue rápida, tan rápida que solo unos pocos familiares pudieron acompañarnos en persona. Pero nuestras familias se unieron a la distancia, y por eso creamos este sitio: para que cada uno de ustedes forme parte de este día tan especial.</p>
+      </div>
+      <div class="frame">
+        <div class="ph has-img" data-photo="story" data-label="Nuestra historia · foto"><img src="photos/DSC_1844.jpg" alt="Robert y Elena frente a la torre del Biltmore" loading="lazy" style="object-position:center 40%"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="day">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">4 de septiembre de 2026</p>
+      <h2>Un día íntimo, <em>a propósito</em></h2>
+      <div class="ornament" aria-hidden="true"><svg><use href="#shell"/></svg></div>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <svg class="icon" aria-hidden="true"><use href="#rose"/></svg>
+        <h3>La Ceremonia</h3>
+        <p class="meta">Miami, Florida · luz de la tarde</p>
+        <p>Dijimos nuestros votos en una ceremonia íntima, con nuestros padres a nuestro lado: sin doscientos invitados, solo las personas que nos criaron, la brisa del mar y rosas blancas por donde miráramos.</p>
+        <p>Texto de ejemplo: una línea sobre quien ofició la ceremonia, los votos y ese momento justo después del beso en que todos respiraron a la vez.</p>
+        <dl class="place">
+          <dt>Dónde</dt><dd>Miami, Florida (nombre del lugar aquí)</dd>
+          <dt>Quiénes</dt><dd>Robert y Elena, con sus padres</dd>
+          <dt>Flores</dt><dd>Rosas blancas, hojas de palma y conchas de mar</dd>
+        </dl>
+      </article>
+      <article class="card">
+        <svg class="icon" aria-hidden="true"><use href="#shell"/></svg>
+        <h3>La Celebración</h3>
+        <p class="meta">Cena en el Biltmore · Coral Gables</p>
+        <p>Después de la ceremonia celebramos con una cena en el Biltmore: una sola mesa larga, muchos brindis y un postre que se alargó más de lo planeado.</p>
+        <p>Texto de ejemplo: qué cenamos, el brindis que sacó la carcajada más grande y la canción que, sin saber cómo, levantó a todos de la silla.</p>
+        <dl class="place">
+          <dt>Dónde</dt><dd>Hotel Biltmore, Coral Gables</dd>
+          <dt>Vestimenta</dt><dd>Elegante, lista para el atardecer</dd>
+          <dt>Menú</dt><dd>Texto de ejemplo: los platos van aquí</dd>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Galería</p>
+      <h2>Veinte momentos <em>favoritos</em></h2>
+      <div class="ornament" aria-hidden="true"><svg><use href="#rose"/></svg></div>
+      <p>Texto de ejemplo: un breve agradecimiento a quien tomó las fotos y una nota de que el álbum completo está disponible para la familia.</p>
+    </div>
+    <div class="masonry" id="masonry">
+      <figure class="big" tabindex="0"><div class="ph has-img" data-photo="01" data-label="Foto 01"><img src="photos/DSC_1837.jpg" alt="Recién casados, a la puerta de la iglesia" loading="lazy" style="object-position:center 40%"></div><figcaption>Recién casados, a la puerta de la iglesia</figcaption></figure>
+      <figure tabindex="0"><div class="ph has-img" data-photo="02" data-label="Foto 02"><img src="photos/DSC_1838.jpg" alt="Nuestras familias, juntas" loading="lazy" style="object-position:center 45%"></div><figcaption>Nuestras familias, juntas</figcaption></figure>
+      <figure tabindex="0"><div class="ph has-img" data-photo="03" data-label="Foto 03"><img src="photos/DSC_1890.jpg" alt="Un beso a la salida" loading="lazy" style="object-position:center 35%"></div><figcaption>Un beso a la salida</figcaption></figure>
+      <figure class="tall" tabindex="0"><div class="ph has-img" data-photo="04" data-label="Foto 04"><img src="photos/DSC_1985.jpg" alt="¡Lo logramos!" loading="lazy" style="object-position:center 30%"></div><figcaption>¡Lo logramos!</figcaption></figure>
+      <figure class="tall" tabindex="0"><div class="ph has-img" data-photo="05" data-label="Foto 05"><img src="photos/DSC_1873.jpg" alt="Bajo las palmas de Coral Gables" loading="lazy" style="object-position:center"></div><figcaption>Bajo las palmas de Coral Gables</figcaption></figure>
+      <figure class="wide" tabindex="0"><div class="ph has-img" data-photo="06" data-label="Foto 06"><img src="photos/DSC_1852.jpg" alt="El primer beso como esposos" loading="lazy" style="object-position:center 40%"></div><figcaption>El primer beso como esposos</figcaption></figure>
+      <figure tabindex="0"><div class="ph has-img" data-photo="07" data-label="Foto 07"><img src="photos/DSC_1842.jpg" alt="Entre palmas reales" loading="lazy" style="object-position:center"></div><figcaption>Entre palmas reales</figcaption></figure>
+      <figure tabindex="0"><div class="ph has-img" data-photo="08" data-label="Foto 08"><img src="photos/DSC_1858.jpg" alt="Una selfie para los que no pudieron venir" loading="lazy" style="object-position:center"></div><figcaption>Una selfie para los que no pudieron venir</figcaption></figure>
+      <figure class="wide" tabindex="0"><div class="ph has-img" data-photo="09" data-label="Foto 09"><img src="photos/DSC_1870.jpg" alt="Las dos familias en el Biltmore" loading="lazy" style="object-position:center 25%"></div><figcaption>Las dos familias en el Biltmore</figcaption></figure>
+      <figure tabindex="0"><div class="ph has-img" data-photo="10" data-label="Foto 10"><img src="photos/DSC_1879.jpg" alt="Elena con su papá y Robert" loading="lazy" style="object-position:center 30%"></div><figcaption>Elena con su papá y Robert</figcaption></figure>
+      <figure tabindex="0"><div class="ph has-img" data-photo="11" data-label="Foto 11"><img src="photos/DSC_1912.jpg" alt="Los anillos" loading="lazy" style="object-position:center"></div><figcaption>Los anillos</figcaption></figure>
+      <figure class="big" tabindex="0"><div class="ph has-img" data-photo="12" data-label="Foto 12"><img src="photos/DSC_1981.jpg" alt="El beso frente al altar" loading="lazy" style="object-position:center 40%"></div><figcaption>El beso frente al altar</figcaption></figure>
+      <figure tabindex="0"><div class="ph has-img" data-photo="13" data-label="Foto 13"><img src="photos/DSC_1958.jpg" alt="El anillo, por fin" loading="lazy" style="object-position:center"></div><figcaption>El anillo, por fin</figcaption></figure>
+      <figure tabindex="0"><div class="ph has-img" data-photo="14" data-label="Foto 14"><img src="photos/DSC_1967.jpg" alt="Presumiendo los anillos" loading="lazy" style="object-position:center 40%"></div><figcaption>Presumiendo los anillos</figcaption></figure>
+      <figure class="wide" tabindex="0"><div class="ph has-img" data-photo="15" data-label="Foto 15"><img src="photos/DSC_1992.jpg" alt="El brindis en familia" loading="lazy" style="object-position:center 30%"></div><figcaption>El brindis en familia</figcaption></figure>
+      <figure class="tall" tabindex="0"><div class="ph has-img" data-photo="16" data-label="Foto 16"><img src="photos/DSC_1930.jpg" alt="Camino al altar del brazo de su papá" loading="lazy" style="object-position:center 25%"></div><figcaption>Camino al altar del brazo de su papá</figcaption></figure>
+      <figure tabindex="0"><div class="ph has-img" data-photo="17" data-label="Foto 17"><img src="photos/DSC_2024.jpg" alt="Un poco de pastel" loading="lazy" style="object-position:center 40%"></div><figcaption>Un poco de pastel</figcaption></figure>
+      <figure tabindex="0"><div class="ph has-img" data-photo="18" data-label="Foto 18"><img src="photos/DSC_2036.jpg" alt="Luces de bengala al atardecer" loading="lazy" style="object-position:center"></div><figcaption>Luces de bengala al atardecer</figcaption></figure>
+      <figure tabindex="0"><div class="ph has-img" data-photo="19" data-label="Foto 19"><img src="photos/DSC_2053.jpg" alt="Un chapuzón para cerrar la noche" loading="lazy" style="object-position:center 45%"></div><figcaption>Un chapuzón para cerrar la noche</figcaption></figure>
+      <figure tabindex="0"><div class="ph has-img" data-photo="20" data-label="Foto 20"><img src="photos/DSC_2061.jpg" alt="Empapados y felices" loading="lazy" style="object-position:center 20%"></div><figcaption>Empapados y felices</figcaption></figure>
+    </div>
+    <p class="gallery-note">Haz clic en cualquier foto para verla en grande</p>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Mensajes de la familia</p>
+      <h2>Palabras que <em>guardaremos</em></h2>
+      <div class="ornament" aria-hidden="true"><svg><use href="#shell"/></svg></div>
+    </div>
+    <div class="notes-grid">
+      <div class="note"><p>Texto de ejemplo: unas palabras de los padres de Robert sobre este día.</p><p class="who">Padres de Robert</p></div>
+      <div class="note"><p>Texto de ejemplo: unas palabras de los padres de Elena sobre este día.</p><p class="who">Padres de Elena</p></div>
+      <div class="note"><p>Aunque no todos pudieron estar en la sala, los sentimos a cada uno con nosotros. Gracias por acompañarnos desde donde estén: este día también es de ustedes.</p><p class="who">Robert y Elena</p></div>
+    </div>
+    <div class="cta"><a class="btn" href="#">Déjanos un mensaje</a></div>
+  </div>
+</section>
+
+<footer>
+  <svg class="palm left" aria-hidden="true"><use href="#palm"/></svg>
+  <svg class="palm right" aria-hidden="true"><use href="#palm"/></svg>
+  <div class="shells" aria-hidden="true"><svg><use href="#shell"/></svg><svg><use href="#rose"/></svg><svg><use href="#shell"/></svg></div>
+  <div class="mono">Robert &amp; Elena</div>
+  <p class="line">Miami · 4 de septiembre de 2026</p>
+  <small>Texto de ejemplo: crédito de fotografía · hecho con amor</small>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Visor de fotos">
+  <span class="count" id="lbCount"></span>
+  <button class="close" id="lbClose" aria-label="Cerrar">×</button>
+  <button class="prev" id="lbPrev" aria-label="Foto anterior">‹</button>
+  <button class="next" id="lbNext" aria-label="Foto siguiente">›</button>
+  <div class="stage">
+    <div class="ph" id="lbPh" data-label=""></div>
+    <p class="cap" id="lbCap"></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var figs = Array.prototype.slice.call(document.querySelectorAll('#masonry figure'));
+  var lb = document.getElementById('lb'), ph = document.getElementById('lbPh'), cap = document.getElementById('lbCap'), cnt = document.getElementById('lbCount');
+  var i = 0;
+  function show(n){
+    i = (n + figs.length) % figs.length;
+    var src = figs[i].querySelector('.ph');
+    var img = src.querySelector('img');
+    ph.innerHTML = '';
+    ph.className = 'ph' + (img ? ' has-img' : '');
+    ph.setAttribute('data-label', src.getAttribute('data-label') || '');
+    if (img){ var c = img.cloneNode(); c.src = img.getAttribute('data-full') || img.src; ph.appendChild(c); }
+    else { ph.innerHTML = src.innerHTML; }
+    cap.textContent = figs[i].querySelector('figcaption').textContent;
+    cnt.textContent = (i+1) + ' / ' + figs.length;
+  }
+  function open(n){ show(n); lb.setAttribute('open',''); document.body.style.overflow='hidden'; document.getElementById('lbClose').focus(); }
+  function close(){ lb.removeAttribute('open'); document.body.style.overflow=''; figs[i].focus(); }
+  figs.forEach(function(f,n){
+    f.addEventListener('click', function(){ open(n); });
+    f.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(n);} });
+  });
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', function(){ show(i-1); });
+  document.getElementById('lbNext').addEventListener('click', function(){ show(i+1); });
+  lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.hasAttribute('open')) return;
+    if(e.key==='Escape') close();
+    if(e.key==='ArrowLeft') show(i-1);
+    if(e.key==='ArrowRight') show(i+1);
+  });
+})();
+</script>
+
+</body>
+</html>
